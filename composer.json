@@ -1,0 +1,17 @@
+{
+    "name": "kgabor/tdd_course_app",
+    "authors": [
+        {
+            "name": "kassaigabor",
+            "email": "gabor.kassai@innonic.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "5.6.*"
+    }
+}
