@@ -28,7 +28,7 @@ class Api
     public function getFeaturedQuestions($order, $sort)
     {
         $url = '/' . $this->version . '/questions/featured?order=' . $order . '&sort=' . $sort . '&site=' . $this->site;
-        $result = json_decode($this->getRequest($url));
+        $result = json_decode($this->getRequest($url), true);
         return $result;
     }
 
@@ -41,7 +41,7 @@ class Api
     public function getAnswers($id, $order, $sort)
     {
         $url = '/' . $this->version . '/questions/' . $id . '/answers?order=' . $order . '&sort=' . $sort . '&site=' . $this->site;
-        $result = json_decode($this->getRequest($url));
+        $result = json_decode($this->getRequest($url), true);
         return $result;
     }
 

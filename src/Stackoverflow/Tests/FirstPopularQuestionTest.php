@@ -47,44 +47,6 @@ class FirstPopularQuestionTest extends \PHPUnit_Framework_TestCase
             ));
     }
 
-    public function testGetQuestions()
-    {
-        $firstPopularQuestion = new FirstPopularQuestion($this->api);
-        $this->assertEquals(
-            json_decode(json_encode(array(
-                'items' => array(0 => array('question_id' => '711'))
-            ))),
-            $firstPopularQuestion->getQuestions()
-        );
-    }
-
-    public function testGetFirstQuestionId()
-    {
-        $firstPopularQuestion = new FirstPopularQuestion($this->api);
-        $this->assertEquals(
-            '711',
-            $firstPopularQuestion->getFirstQuestionId(
-                json_decode(json_encode(array(
-                    'items' => array(0 => array('question_id' => '711'))
-                )))
-            )
-        );
-    }
-
-    public function testGetAnswers()
-    {
-        $firstPopularQuestion = new FirstPopularQuestion($this->api);
-        $this->assertEquals(
-            json_decode(json_encode(array(
-                'items' => array(
-                    0 => array('owner' => array('user_id' => '123')),
-                    1 => array('owner' => array('user_id' => '456'))
-                )
-            ))),
-            $firstPopularQuestion->getAnswers('711')
-        );
-    }
-
     public function testGetFirstPopularQuestion()
     {
         $firstPopularQuestion = new FirstPopularQuestion($this->api);

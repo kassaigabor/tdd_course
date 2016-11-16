@@ -40,7 +40,7 @@ class FirstPopularQuestion
     /**
      * @return bool|mixed
      */
-    public function getQuestions()
+    protected function getQuestions()
     {
         $questions = $this->api->getFeaturedQuestions('desc', 'votes');
         if (!(isset($questions->items))) {
@@ -53,7 +53,7 @@ class FirstPopularQuestion
      * @param $questions
      * @return bool
      */
-    public function getFirstQuestionId($questions)
+    protected function getFirstQuestionId($questions)
     {
         if (!$questions) {
             return false;
@@ -65,7 +65,7 @@ class FirstPopularQuestion
      * @param $id
      * @return bool|mixed
      */
-    public function getAnswers($id)
+    protected function getAnswers($id)
     {
         if (!$id) {
             return false;
