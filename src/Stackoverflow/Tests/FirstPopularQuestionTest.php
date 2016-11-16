@@ -89,7 +89,10 @@ class FirstPopularQuestionTest extends \PHPUnit_Framework_TestCase
     {
         $firstPopularQuestion = new FirstPopularQuestion($this->api);
         $this->assertEquals(
-            array('123, 456'),
+            array(
+                0 => '123',
+                1 => '456'
+            ),
             $firstPopularQuestion->getFirstPopularQuestion()
         );
     }
