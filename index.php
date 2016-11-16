@@ -2,19 +2,27 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once ('src/MarkDownConverter/MarkDownConverter.php');
-require_once ('src/MarkDownConverter/FileReader.php');
-require_once ('src/MarkDownConverter/FileWriter.php');
-require_once ('src/MarkDownConverter/Parser/Parser.php');
+require_once 'vendor/autoload.php';
 
 use MarkDownConverter\MarkDownConverter;
 use MarkDownConverter\FileReader;
 use MarkDownConverter\FileWriter;
 use MarkDownConverter\Parser\Parser;
 
+use Stackoverflow\FirstPopularQuestion;
+use Stackoverflow\Api\Api;
+
 class run
 {
-    public function __construct()
+    public function __construct($index)
+    {
+        if ($index == 0) {
+            $this->runMarkDownConverter();
+        }
+        $this->runFirstPopularQuestion();
+    }
+
+    protected function runMarkDownConverter()
     {
         $converter = new MarkDownConverter(
             new FileReader(),
@@ -25,5 +33,12 @@ class run
             echo file_get_contents('data/ExampleContent.html');
         }
     }
+
+    protected function runFirstPopularQuestion()
+    {
+        $api = new Api();
+        $firstPopularQuestion = new FirstPopularQuestion($api);
+        var_dump($firstPopularQuestion->getFirstPopularQuestion());
+    }
 }
-new run();
+new run(1);
